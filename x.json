@@ -115,7 +115,7 @@
       "title": "Email Server",
       "ns": "emailjs",
       "name": "server",
-      "fn": "var options = {\n  user: input.user,\n  password: input.password,\n  host: input.host,\n  timeout: input.timeout\n};\n\nif(input.domain) options.domain = input.domain;\nif(input.tls) options.tls = input.tls;\nif(input.ssl) options.ssl = input.ssl;\n\noutput.server = input.emailjs.server.connect(options);\n"
+      "fn": "var options = {\n  user: input.user,\n  password: input.password,\n  host: input.host,\n  timeout: input.timeout\n};\n\nif(input.domain) options.domain = input.domain;\nif(input.tls) options.tls = input.tls;\nif(input.ssl) options.ssl = input.ssl;\n\noutput.server = emailjs.server.connect(options);\n"
     }
   ],
   "twigs": []

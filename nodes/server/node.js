@@ -9,4 +9,4 @@ if(input.domain) options.domain = input.domain;
 if(input.tls) options.tls = input.tls;
 if(input.ssl) options.ssl = input.ssl;
 
-output.server = input.emailjs.server.connect(options);
+output.server = emailjs.server.connect(options);
