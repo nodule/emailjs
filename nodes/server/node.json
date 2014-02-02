@@ -1,0 +1,39 @@
+{
+  "name": "server",
+  "ns": "emailjs",
+  "title": "Email Server",
+  "description": "Connect to a smtp server",
+  "phrases": {
+    "active": "Connecting ot mail server {{input.domain}}"
+  },
+  "require": {
+    "emailjs": "0.x.x"
+  },
+  "ports": {
+    "input": {
+      "user": {
+        "type": "string",
+        "title": "Username"
+      },
+      "password": {
+        "type": "string",
+        "title": "Password"
+      },
+      "host": {
+        "type": "string",
+        "title": "Hostname"
+      },
+      "ssl": {
+        "type": "boolean",
+        "title": "SSL",
+        "default": true
+      }
+    },
+    "output": {
+      "server": {
+        "title": "Server",
+        "type": "function"
+      }
+    }
+  }
+}

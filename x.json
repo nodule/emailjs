@@ -1,0 +1,122 @@
+{
+  "name": "emailjs",
+  "description": "EmailJS for Chiχ",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/emailjs.git"
+  },
+  "dependencies": {
+    "emailjs": "0.x.x"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "server": {
+            "title": "Server",
+            "type": "function"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "from": {
+            "type": "string",
+            "title": "From"
+          },
+          "to": {
+            "type": "string",
+            "title": "To"
+          },
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "cc": {
+            "type": "string",
+            "title": "CC",
+            "default": null
+          },
+          "tls": {
+            "type": "boolean",
+            "title": "TLS",
+            "default": null
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Timeout",
+            "description": "max number of milliseconds to wait for smtp responses",
+            "default": 5000
+          },
+          "domain": {
+            "type": "string",
+            "title": "Domain",
+            "description": "domain to greet smtp with (defaults to os.hostname)",
+            "default": null
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Details",
+            "description": "Details of the message that was send",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Sending email"
+      },
+      "description": "Sends an Email",
+      "title": "Send Email",
+      "ns": "emailjs",
+      "name": "send",
+      "fn": "var message = {\n  text: input.text,\n  from: input.from,\n  to: input.to,\n  subject: input.subject\n};\n\nif(input.cc) message.cc = input.cc;\n\noutput = [input.server, 'send', message];\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "user": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          },
+          "host": {
+            "type": "string",
+            "title": "Hostname"
+          },
+          "ssl": {
+            "type": "boolean",
+            "title": "SSL",
+            "default": true
+          }
+        },
+        "output": {
+          "server": {
+            "title": "Server",
+            "type": "function"
+          }
+        }
+      },
+      "require": {
+        "emailjs": "0.x.x"
+      },
+      "phrases": {
+        "active": "Connecting ot mail server {{input.domain}}"
+      },
+      "description": "Connect to a smtp server",
+      "title": "Email Server",
+      "ns": "emailjs",
+      "name": "server",
+      "fn": "var options = {\n  user: input.user,\n  password: input.password,\n  host: input.host,\n  timeout: input.timeout\n};\n\nif(input.domain) options.domain = input.domain;\nif(input.tls) options.tls = input.tls;\nif(input.ssl) options.ssl = input.ssl;\n\noutput.server = input.emailjs.server.connect(options);\n"
+    }
+  ],
+  "twigs": []
+}

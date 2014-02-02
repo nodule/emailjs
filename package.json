@@ -1,0 +1,29 @@
+{
+  "name": "nodule-emailjs",
+  "description": "EmailJS for Chiχ",
+  "author": "Rob Halff <rob.halff@gmail.com>",
+  "version": "0.0.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/emailjs.git"
+  },
+  "engines": {
+    "node": "0.x.x"
+  },
+  "main": "x",
+  "dependencies": {
+    "emailjs": "0.x.x"
+  },
+  "devDependencies": {
+    "chit": "0.x.x"
+  },
+  "scripts": {
+    "test": "chit"
+  },
+  "chix": {
+    "name": "emailjs",
+    "description": "",
+    "color": "rgb(136,35,35)"
+  }
+}
