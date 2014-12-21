@@ -1,10 +1,18 @@
-var message = {
-  text: input.text,
-  from: input.from,
-  to: input.to,
-  subject: input.subject
+output = function() {
+  var message = {
+    text: input.text,
+    from: input.from,
+    to: input.to,
+    subject: input.subject
+  };
+
+  if(input.cc) message.cc = input.cc;
+
+  input.server.send(message, function(err, out) {
+    if(err) {
+     output({error: err});
+    } else {
+     output({out: out});
+    }
+  });
 };
-
-if(input.cc) message.cc = input.cc;
-
-output = [input.server, 'send', message];
