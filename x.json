@@ -75,7 +75,7 @@
       "title": "Send Email",
       "ns": "emailjs",
       "name": "send",
-      "fn": "var message = {\n  text: input.text,\n  from: input.from,\n  to: input.to,\n  subject: input.subject\n};\n\nif(input.cc) message.cc = input.cc;\n\noutput = [input.server, 'send', message];\n"
+      "fn": "output = function() {\n  var message = {\n    text: input.text,\n    from: input.from,\n    to: input.to,\n    subject: input.subject\n  };\n\n  if(input.cc) message.cc = input.cc;\n\n  input.server.send(message, function(err, out) {\n    if(err) {\n     output({error: err});\n    } else {\n     output({out: out});\n    }\n  });\n};\n"
     },
     {
       "dependencies": {
