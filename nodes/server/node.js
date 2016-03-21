@@ -1,12 +1,12 @@
 var options = {
-  user: input.user,
-  password: input.password,
-  host: input.host,
-  timeout: input.timeout
+  user: $.user,
+  password: $.password,
+  host: $.host,
+  timeout: $.timeout
 };
 
-if(input.domain) options.domain = input.domain;
-if(input.tls) options.tls = input.tls;
-if(input.ssl) options.ssl = input.ssl;
+if($.domain) options.domain = $.domain;
+if($.tls) options.tls = $.tls;
+if($.ssl) options.ssl = $.ssl;
 
 output.server = emailjs.server.connect(options);

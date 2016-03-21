@@ -1,14 +1,14 @@
 output = function() {
   var message = {
-    text: input.text,
-    from: input.from,
-    to: input.to,
-    subject: input.subject
+    text: $.text,
+    from: $.from,
+    to: $.to,
+    subject: $.subject
   };
 
-  if(input.cc) message.cc = input.cc;
+  if($.cc) message.cc = $.cc;
 
-  input.server.send(message, function(err, out) {
+  $.server.send(message, function(err, out) {
     if(err) {
      output({error: err});
     } else {
