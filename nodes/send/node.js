@@ -10,9 +10,9 @@ output = function() {
 
   $.server.send(message, function(err, out) {
     if(err) {
-     output({error: err});
+     output({error: $.create(err)});
     } else {
-     output({out: out});
+     output({out: $.create(out)});
     }
   });
 };

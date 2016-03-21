@@ -9,4 +9,4 @@ if($.domain) options.domain = $.domain;
 if($.tls) options.tls = $.tls;
 if($.ssl) options.ssl = $.ssl;
 
-output.server = emailjs.server.connect(options);
+output.server = $.create(emailjs.server.connect(options));
