@@ -75,7 +75,7 @@
       "title": "Send Email",
       "ns": "emailjs",
       "name": "send",
-      "fn": "output = function() {\n  var message = {\n    text: input.text,\n    from: input.from,\n    to: input.to,\n    subject: input.subject\n  };\n\n  if(input.cc) message.cc = input.cc;\n\n  input.server.send(message, function(err, out) {\n    if(err) {\n     output({error: err});\n    } else {\n     output({out: out});\n    }\n  });\n};\n"
+      "fn": "output = function() {\n  var message = {\n    text: $.text,\n    from: $.from,\n    to: $.to,\n    subject: $.subject\n  };\n\n  if($.cc) message.cc = $.cc;\n\n  $.server.send(message, function(err, out) {\n    if(err) {\n     output({error: $.create(err)});\n    } else {\n     output({out: $.create(out)});\n    }\n  });\n};\n"
     },
     {
       "dependencies": {
@@ -117,7 +117,7 @@
       "title": "Email Server",
       "ns": "emailjs",
       "name": "server",
-      "fn": "var options = {\n  user: input.user,\n  password: input.password,\n  host: input.host,\n  timeout: input.timeout\n};\n\nif(input.domain) options.domain = input.domain;\nif(input.tls) options.tls = input.tls;\nif(input.ssl) options.ssl = input.ssl;\n\noutput.server = emailjs.server.connect(options);\n"
+      "fn": "var options = {\n  user: $.user,\n  password: $.password,\n  host: $.host,\n  timeout: $.timeout\n};\n\nif($.domain) options.domain = $.domain;\nif($.tls) options.tls = $.tls;\nif($.ssl) options.ssl = $.ssl;\n\noutput.server = $.create(emailjs.server.connect(options));\n"
     }
   ],
   "twigs": []

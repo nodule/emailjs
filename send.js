@@ -63,25 +63,25 @@ module.exports = {
       }
     }
   },
-  fn: function send(input, output, state, done, cb, on) {
+  fn: function send(input, $, output, state, done, cb, on) {
     var r = function() {
       var message = {
-        text: input.text,
-        from: input.from,
-        to: input.to,
-        subject: input.subject
+        text: $.text,
+        from: $.from,
+        to: $.to,
+        subject: $.subject
       };
 
-      if (input.cc) message.cc = input.cc;
+      if ($.cc) message.cc = $.cc;
 
-      input.server.send(message, function(err, out) {
+      $.server.send(message, function(err, out) {
         if (err) {
           output({
-            error: err
+            error: $.create(err)
           });
         } else {
           output({
-            out: out
+            out: $.create(out)
           });
         }
       });
