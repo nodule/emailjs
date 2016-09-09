@@ -11,6 +11,13 @@
   },
   "nodes": [
     {
+      "name": "send",
+      "ns": "emailjs",
+      "title": "Send Email",
+      "description": "Sends an Email",
+      "phrases": {
+        "active": "Sending email"
+      },
       "ports": {
         "input": {
           "server": {
@@ -68,20 +75,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Sending email"
-      },
-      "description": "Sends an Email",
-      "title": "Send Email",
-      "ns": "emailjs",
-      "name": "send",
       "fn": "output = function() {\n  var message = {\n    text: $.text,\n    from: $.from,\n    to: $.to,\n    subject: $.subject\n  };\n\n  if($.cc) message.cc = $.cc;\n\n  $.server.send(message, function(err, out) {\n    if(err) {\n     output({error: $.create(err)});\n    } else {\n     output({out: $.create(out)});\n    }\n  });\n};\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "emailjs": "0.x.x"
-        }
+      "name": "server",
+      "ns": "emailjs",
+      "title": "Email Server",
+      "description": "Connect to a smtp server",
+      "phrases": {
+        "active": "Connecting ot mail server {{input.domain}}"
       },
       "ports": {
         "input": {
@@ -110,15 +112,12 @@
           }
         }
       },
-      "phrases": {
-        "active": "Connecting ot mail server {{input.domain}}"
+      "dependencies": {
+        "npm": {
+          "emailjs": "0.x.x"
+        }
       },
-      "description": "Connect to a smtp server",
-      "title": "Email Server",
-      "ns": "emailjs",
-      "name": "server",
       "fn": "var options = {\n  user: $.user,\n  password: $.password,\n  host: $.host,\n  timeout: $.timeout\n};\n\nif($.domain) options.domain = $.domain;\nif($.tls) options.tls = $.tls;\nif($.ssl) options.ssl = $.ssl;\n\noutput.server = $.create(emailjs.server.connect(options));\n"
     }
-  ],
-  "twigs": []
+  ]
 }
